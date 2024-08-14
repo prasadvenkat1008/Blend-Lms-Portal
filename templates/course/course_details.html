@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- PAGE TITLE -->
+<header class="py-8 py-md-11" style="background-image: none;">
+    <div class="container text-center py-xl-2">
+        <h1 class="display-4 fw-semi-bold mb-0">{{ course.course_title }}</h1>
+        <p class="lead mb-4">{{ course.description }}</p>
+    </div>
+</header>
+
+<!-- COURSE DETAIL -->
+<div class="container mb-11">
+    <div class="row gx-4">
+        <div class="col-md-4">
+            <!-- Author -->
+            <div class="bg-light p-4 rounded" style="border: 1px solid #007bff;">
+                <h3 class="mb-4">About the Author</h3>
+                {% if course.author %}
+                    <img src="{{ course.author.author_profile.url }}" alt="{{ course.author.name }}" class="img-fluid rounded-circle mb-3" style="width: 150px; height: 150px; object-fit: cover;">
+                    <h4>{{ course.author.name }}</h4>
+                    <p>{{ course.author.about_author }}</p>
+                {% else %}
+                    <p>Author information not available.</p>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-8">
+            <!-- Lessons and Videos -->
+            <div class="bg-light p-4 rounded" style="border: 1px solid #007bff;">
+                <h2 class="mb-4">Lessons</h2>
+                {% if course.lessons.all %}
+                    {% for lesson in course.lessons.all %}
+                        <div class="accordion mb-4" id="accordionLesson{{ lesson.id }}">
+                            <div class="accordion-item" style="border: 1px solid #007bff;">
+                                <h2 class="accordion-header" id="heading{{ lesson.id }}">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ lesson.id }}" aria-expanded="true" aria-controls="collapse{{ lesson.id }}" style="background-color: #007bff; color: #fff; font-size: 1.1rem;">
+                                        {{ lesson.name }}
+                                    </button>
+                                </h2>
+                                <div id="collapse{{ lesson.id }}" class="accordion-collapse collapse show" aria-labelledby="heading{{ lesson.id }}" data-bs-parent="#accordionLesson{{ lesson.id }}">
+                                    <div class="accordion-body" style="background-color: #f8f9fa;">
+                                        {% if lesson.notes_pdf %}
+                                            <a href="{{ lesson.notes_pdf.url }}" download class="btn btn-outline-primary mb-3">Download Notes</a>
+                                            <a href="{{ lesson.notes_pdf.url }}" target="_blank" class="btn btn-outline-primary mb-3">View Notes</a>
+                                        {% endif %}
+                                        <h5>Videos</h5>
+                                        {% if lesson.videos.all %}
+                                            {% for video in lesson.videos.all|dictsort:"serial_number" %}
+                                                <div class="mb-3">
+                                                    <h6>{{ video.title }}</h6>
+                                                    {% if video.youtube_id %}
+                                                        <iframe width="100%" height="315" src="https://www.youtube.com/embed/{{ video.youtube_id }}" frameborder="0" allowfullscreen></iframe>
+                                                    {% elif video.video_url %}
+                                                        <video width="100%" height="315" controls>
+                                                            <source src="{{ video.video_url }}" type="video/mp4">
+                                                            Your browser does not support the video tag.
+                                                        </video>
+                                                    {% elif video.video_file.url%}
+                                                        <video width="100%" height="315" controls>
+                                                            <source src="{{ video.video_file.url }}" type="video/mp4">
+                                                            Your browser does not support the video tag.
+                                                        </video>
+
+                                                    {% else %}
+                                                        <p>Video source not available.</p>
+                                                    {% endif %}
+                                                </div>
+                                            {% endfor %}
+                                        {% else %}
+                                            <p>No videos available for this lesson.</p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No lessons available for this course.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Inline CSS for Custom Styling -->
+<style>
+/* Custom styling for course detail page */
+.bg-light {
+    background-color: #f8f9fa !important;
+    padding: 20px;
+}
+
+.btn-outline-primary {
+    border-color: #007bff;
+    color: #007bff;
+}
+
+.btn-outline-primary:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.accordion-button {
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+.accordion-button:not(.collapsed) {
+    color: #fff;
+    background-color: #0056b3;
+}
+
+.accordion-body {
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+.accordion-item {
+    border: 1px solid #007bff;
+    border-radius: .25rem;
+}
+
+.rounded {
+    border-radius: .25rem !important;
+}
+
+.rounded-circle {
+    border-radius: 50% !important;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    max-width: 1000px;
+}
+
+header .container {
+    max-width: 800px;
+}
+
+h1.display-4 {
+    font-size: 2.5rem;
+}
+
+p.lead {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+h3, h4, h5, h6 {
+    margin-bottom: 1rem;
+}
+
+.mb-3 {
+    margin-bottom: 1rem !important;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem !important;
+}
+
+.mb-11 {
+    margin-bottom: 3rem !important;
+}
+</style>
+
+{% endblock %}
