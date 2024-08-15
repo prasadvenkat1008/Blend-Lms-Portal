@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-PROJECT_MAIN_DIR_NAME="django-aws-ec2-nginx-gunicorn"
+PROJECT_MAIN_DIR_NAME="lms"
 
 # Validate variables
 if [ -z "$PROJECT_MAIN_DIR_NAME" ]; then
@@ -22,6 +22,6 @@ source "/home/ubuntu/$PROJECT_MAIN_DIR_NAME/venv/bin/activate"
 
 # Install dependencies
 echo "Installing Python dependencies..."
-pip install -r "/home/ubuntu/$PROJECT_MAIN_DIR_NAME/requirements.txt"
+pip install -r "/home/ubuntu/$PROJECT_MAIN_DIR_NAME/version.txt"
 
 echo "Dependencies installed successfully."
