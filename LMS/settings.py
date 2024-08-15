@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-0ks-8)i(9#dzlvx9)ze^%t#ulgh0h2s#e&jay0nh6^y!qf5ok%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['13.234.217.148', 'localhost']
+ALLOWED_HOSTS = ["*"]
 
 
 
@@ -81,22 +81,22 @@ WSGI_APPLICATION = 'LMS.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-       'NAME': 'django',
-       'USER': 'admin',
-       'PASSWORD': 'password',
-       'HOST': 'localhost',
-       'PORT': '',
-    }
-}   
 #DATABASES = {
-#   'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#       'NAME': 'django',
+#       'USER': 'admin',
+#       'PASSWORD': 'password',
+#       'HOST': 'localhost',
+#       'PORT': '',
 #    }
-#}  
+#}   
+DATABASES = {
+   'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}  
 
 
 # Password validation
@@ -132,13 +132,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
+STATIC_URL = 'static/'
 
-STATIC_URL = '/static/'
-STATIC_ROOT = '/static/'
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'static')
-]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+MEDIA_URLS ='/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
