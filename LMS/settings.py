@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-0ks-8)i(9#dzlvx9)ze^%t#ulgh0h2s#e&jay0nh6^y!qf5ok%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['3.110.175.225', 'localhost']
+ALLOWED_HOSTS = ['13.234.217.148', 'localhost']
 
 
 
@@ -81,22 +81,22 @@ WSGI_APPLICATION = 'LMS.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql',
-#       'NAME': 'blend',
-#       'USER': 'postgres',
-#       'PASSWORD': 'prasadvenkat',
-#       'HOST': 'blend.czcegq4wo0o6.us-east-1.rds.amazonaws.com',
-#       'PORT': '5432',
-#    }
-#}   
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+       'NAME': 'django',
+       'USER': 'admin',
+       'PASSWORD': 'password',
+       'HOST': 'localhost',
+       'PORT': '',
     }
-}  
+}   
+#DATABASES = {
+#   'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}  
 
 
 # Password validation
