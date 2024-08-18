@@ -100,30 +100,8 @@ EMAIL_HOST_USER = 'prasadvenkat1008@gmail.com'
 EMAIL_HOST_PASSWORD = 'adtu evoy cmpb ekhx'
 
 
-AWS_ACCESS_KEY_ID = 'AKIAQE3RPAHADR7WHEKS '
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'blendvidya'
-AWS_S3_SIGNATURE_NAME = 's3v4',
-AWS_S3_REGION_NAME = 'ap-south-1'
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL =  None
-AWS_S3_VERITY = True
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'   
-
-
-
-
-# Media files (Uploaded content)
-MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/media/'
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-# Static and media files in development mode
-if DEBUG:
-    STATIC_URL = '/static/'
-    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-    MEDIA_URL = '/Media/'
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'Media')
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # This is for production
+MEDIA_URL = '/Media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'Media')
     
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
