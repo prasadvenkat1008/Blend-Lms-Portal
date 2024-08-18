@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'crispy_forms',
     'bootstrap4',
+    'storages',
 ]
 
 MIDDLEWARE = [
