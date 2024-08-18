@@ -5,8 +5,8 @@ from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+
+SECRET_KEY = 'django-insecure-0ks-8)i(9#dzlvx9)ze^%t#ulgh0h2s#e&jay0nh6^y!qf5ok%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
