@@ -92,26 +92,26 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# Email configuration for Django
+
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = 'prasadvenkat1008@gmail.com'
+EMAIL_HOST_PASSWORD = 'adtu evoy cmpb ekhx'
 
-# AWS S3 configuration for static and media files
-AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = 'blendvidya'  # Your bucket name
-AWS_S3_REGION_NAME = config('AWS_S3_REGION_NAME', default='ap-south-1')
-AWS_S3_SIGNATURE_NAME = 's3v4'
+
+AWS_ACCESS_KEY_ID = 'AKIAQE3RPAHADR7WHEKS '
+AWS_SECRET_ACCESS_KEY = '981IRjNXVU09JLfTOQOc3KX258FSTKJZ5DeQnpV1'
+AWS_STORAGE_BUCKET_NAME = 'blendvidya'
+AWS_S3_SIGNATURE_NAME = 's3v4',
+AWS_S3_REGION_NAME = 'ap-south-1'
 AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None
-AWS_S3_VERIFY = True
+AWS_DEFAULT_ACL =  None
+AWS_S3_VERITY = True
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'   
 
-# Static files (CSS, JavaScript, Images)
-STATIC_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/static/'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+
 
 # Media files (Uploaded content)
 MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/media/'
